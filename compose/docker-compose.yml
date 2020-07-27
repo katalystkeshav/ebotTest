@@ -1,0 +1,18 @@
+version: '2.1'
+services:
+  nginx:
+    image: nginx-test:1.2
+    ports:
+      - 8001:80
+    depends_on:
+      - mongo
+    links:
+      - "mongo:mongo.local"
+  count:
+    image: count-test:1.4
+    depends_on:
+      - mongo
+    links:
+      - "mongo:mongo.local"
+  mongo:
+    image: mongo:bionic

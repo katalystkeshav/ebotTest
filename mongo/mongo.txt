@@ -1,0 +1,13 @@
+db.createUser(
+    {
+      user: "test",
+      pwd: passwordPrompt(),
+      roles: [ "readWrite", "dbAdmin" ]
+    }
+ )
+ 
+ db.changeUserPassword("test", "test@123")
+ db.createCollection(access)
+ db.createCollection('access', { capped: true, size: 32000000 })
+
+ db.access.find({"time": { $gt: ISODate("2020-06-06T12:28:55Z")}, "code": "401"})
